@@ -4,13 +4,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Navigation from "../navigation/Navigation";
 import { Link } from "react-router-dom";
+import { themeDefault } from '../../Authentication/Login'
 
 export default function Cart() {
   const [cart, setCart] = useState([]);
   useEffect(() => {
     axios
       .get(
-        "http://localhost:8080/cart/?token=33c0b98d-4711-48bb-a898-aa9d38e03c3d"
+        `http://localhost:8080/cart/?token=${themeDefault}`
       )
       .then((response) => {
         console.log(response.data);
@@ -33,14 +34,14 @@ export default function Cart() {
       console.log(requestBody);
       axios
         .put(
-          "http://localhost:8080/cart/update/?token=33c0b98d-4711-48bb-a898-aa9d38e03c3d",
+          `http://localhost:8080/cart/update/?token=${themeDefault}`,
           requestBody
         )
         .then((response) => {
           console.log(response.data);
           axios
             .get(
-              "http://localhost:8080/cart/?token=33c0b98d-4711-48bb-a898-aa9d38e03c3d"
+              `http://localhost:8080/cart/?token=${themeDefault}`
             )
             .then((response) => {
               console.log(response.data);
@@ -60,14 +61,14 @@ export default function Cart() {
       console.log(requestBody);
       axios
         .put(
-          "http://localhost:8080/cart/update/?token=33c0b98d-4711-48bb-a898-aa9d38e03c3d",
+          `http://localhost:8080/cart/update/?token=${themeDefault}`,
           requestBody
         )
         .then((response) => {
           console.log(response.data);
           axios
             .get(
-              "http://localhost:8080/cart/?token=33c0b98d-4711-48bb-a898-aa9d38e03c3d"
+              `http://localhost:8080/cart/?token=${themeDefault}`
             )
             .then((response) => {
               console.log(response.data);

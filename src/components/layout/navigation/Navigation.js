@@ -6,7 +6,7 @@ function Navigation() {
     <div>
       <nav className="navbar navbars navbar-expand-lg fixed-top">
         <div className="container-fluid p-0">
-          <Link to={"/"} className="navbar-brand appName ">
+          <Link to={"/AllCategories"} className="navbar-brand appName ">
             <div >Grocery Shop</div>
           </Link>
           <div
