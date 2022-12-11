@@ -1,0 +1,64 @@
+.cartMain{
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 1%;
+}
+.cardBody{
+    position: relative;
+}
+.headerCrd{
+    background-color: rgb(2, 68, 2);
+    border: 0px;
+}
+.cardSetup{
+    /* height: 300px !important; */
+    margin-top: 10%;
+    border: 0px !important;
+}
+.itemName{
+    font-size: 22px;
+    color: black;
+    line-height: 1;
+}
+.itemDes{
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.742);
+}
+.productImg{
+    width: 12% !important;
+}
+.btnStyle{
+    border: 0px;
+    background-color: transparent;
+    font-size: 22px;
+}
+.counterSet{
+    padding-right: 5px;
+    font-size: 22px;
+}
+.totalAmt{
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.cartPlaceOrderBtn{
+    background-color: rgb(2, 68, 2);
+    border: 0px;
+    font-size: large;
+    color: white;
+    padding: 14px 30px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+.cartGrabMoreBtn{
+    background-color: transparent;
+    border: 0px;
+    font-size: 22px;
+    color: rgb(2, 68, 2);
+    padding: 14px 30px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
