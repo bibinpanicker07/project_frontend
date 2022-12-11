@@ -1,0 +1,33 @@
+.square1{
+    display: inline-block;
+    width: 600px;
+    height: 100px;
+    background: wheat;
+}
+.welcome{
+    color: #314402;
+    font-weight: 5rem;
+    font-weight: 700;
+    padding-bottom: 5rem;
+}
+.form{
+    margin-top: 0px;
+    padding-top: 11rem;
+    padding-left: 20rem;
+    font-size: 0.5rem;
+
+}
+.input{
+    padding:0.6rem;
+    width: 21.5rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+    height: 3.2rem;
+}
+
+.label{
+    color: #dba600;
+    padding-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+}

@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./product.module.css";
 import { useParams } from "react-router-dom";
+import { themeDefault } from '../Authentication/Login'
 
 export default function Product(props) {
   const params = useParams();
   console.log(params.id)
   const [product, setProduct] = useState([]);
-  // console.log(props?.setCmp)
+  
   useEffect(() => {
     if ( params.id) {
         const setID = params.id
@@ -29,15 +30,15 @@ export default function Product(props) {
       productId: itemId,
       quantity: itemCount
     }
-    axios.post("http://localhost:8080/cart/add?token=33c0b98d-4711-48bb-a898-aa9d38e03c3d",requestBody).then((response) => {
-        console.log(response.data)
+    axios.post(`http://localhost:8080/cart/add?token=${themeDefault}`,requestBody).then((response) => {
+        alert(response.data)
       });
   }
-
   const Increment = (data,payload,id) => {
       if (data == 'INCREMENT') {
       const objIndex = product.findIndex((obj => obj.id == id));
       product[objIndex].count = product[objIndex].count + 1;
+  
       console.log(product);
       setProduct(product);
       }
