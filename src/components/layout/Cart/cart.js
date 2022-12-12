@@ -5,8 +5,9 @@ import axios from "axios";
 import Navigation from "../navigation/Navigation";
 import { Link } from "react-router-dom";
 import { themeDefault } from '../../Authentication/Login'
-
+import {useNavigate} from "react-router-dom";
 export default function Cart() {
+  const navigate=useNavigate();
   const [cart, setCart] = useState([]);
   useEffect(() => {
     axios
@@ -144,7 +145,9 @@ export default function Cart() {
                 Total amount :<span> &#8377;{cart?.totalCost}</span>{" "}
               </div>
               <div>
-                <button className={" " + styles.cartPlaceOrderBtn}>
+                <button className={" " + styles.cartPlaceOrderBtn} onClick={(e) => {
+                                        navigate("/order");
+                                    }}>
                   place order
                 </button>
               </div>

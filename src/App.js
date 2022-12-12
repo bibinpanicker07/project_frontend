@@ -5,6 +5,7 @@ import ProductListById from './components/layout/category/ProductListById';
 import Cart from './components/layout/Cart/cart';
 import Login from "./components/Authentication/Login";
 import SignUp from './components/Authentication/Signup';
+import Order from './components/Order/Order';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/AllCategories" element={<AllCategories />}></Route>
       <Route path="/:id" element={<ProductListById />}></Route>
       <Route path="/cart" element={<Cart />}></Route>
+      <Route path="/order" element={<Order/>}></Route>
       </Routes>
       
    
