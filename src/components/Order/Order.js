@@ -3,13 +3,13 @@ import Navigation from '../layout/navigation/Navigation';
 import './Order.css';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import validator from 'validator'
 import styles from "../layout/Cart/cart.module.css";
 import { themeDefault } from '../Authentication/Login';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Order() {
-    const navigate=useNavigate();
+    const navigate = useNavigate();
     const [cart, setCart] = useState([]);
     useEffect(() => {
         axios
@@ -29,7 +29,23 @@ function Order() {
         checkOut: {}
     });
     user.checkOut = cart
+    const [mobError, setMobError] = useState('')
 
+
+    const validateMobile = (e) => {
+
+
+        if (validator.isMobilePhone(user.contactNumber)) {
+
+            setMobError('')
+            postUser(e);
+        } else {
+            setMobError('Enter valid Contact Number!')
+        }
+
+
+
+    }
     function postUser(e) {
         e.preventDefault();
         //console.log(user);
@@ -42,11 +58,11 @@ function Order() {
                 console.log(response.data);
                 alert("Order Placed successfully!!!");
                 navigate("/AllCategories");
-                
 
-            }).catch((error)=>{
+
+            }).catch((error) => {
                 alert("Enter All Details ")
-               });
+            });
     }
 
 
@@ -57,11 +73,11 @@ function Order() {
                 <div className="accordion accordion-flush" id="accordionFlushExample" >
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="flush-headingOne">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                                 DELIVERY DETAILS
                             </button>
                         </h2>
-                        <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseOne" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo" data-bs-parent="#accordionFlushExample">
                             <div className="accordion-body"><form className="row g-3 needs-validation" novalidate>
                                 <div className="col-md-6">
                                     <label for="validationCustom01" className="form-label">Full name</label>
@@ -73,6 +89,10 @@ function Order() {
                                 <div className="col-md-6">
                                     <label for="validationCustom02" className="form-label">Phone Number</label>
                                     <input type="text" className="form-control" id="validationCustom02" value={user.contactNumber} required onChange={(e) => setUser({ ...user, contactNumber: e.target.value })} />
+                                    <br></br> <span style={{
+                                        fontWeight: 'bold',
+                                        color: 'red', fontSize: 15,
+                                    }}>{mobError}</span><br></br>
                                     <div className="valid-feedback">
                                         Looks good!
                                     </div>
@@ -85,17 +105,17 @@ function Order() {
                                         Please provide a valid city.
                                     </div>
                                 </div>
-                                
+
                             </form></div>
                         </div>
                     </div>
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="flush-headingTwo">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="true" aria-controls="flush-collapseTwo">
                                 ORDER SUMMARY
                             </button>
                         </h2>
-                        <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseTwo" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo" data-bs-parent="#accordionFlushExample">
                             <div className="accordion-body">
                                 <div className="card-text" id="navbar-example">
                                     {cart?.cartItems?.map((item, index) => {
@@ -130,23 +150,23 @@ function Order() {
 
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
-                                            
+
                                         );
                                     })}
-                                   <div className="d-flex justify-content-evenly pt-5 pb-5">
-              <div className={styles.totalAmt}>
-                Total amount :<span> &#8377;{cart?.totalCost}</span>{" "}
-              </div>
-              <div>
-                                    <button className="btn btn-success" type="submit" onClick={(e) => {
-                                        postUser(e);
-                                    }}>CONFIRM </button>
-                                </div>
-            </div>
-            
-         
+                                    <div className="d-flex justify-content-evenly pt-5 pb-5">
+                                        <div className={styles.totalAmt}>
+                                            Total amount :<span> &#8377;{cart?.totalCost}</span>{" "}
+                                        </div>
+                                        <div>
+                                            <button className="btn btn-success" type="submit" onClick={(e) => {
+                                                validateMobile(e);
+                                            }}>CONFIRM </button>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             </div>
                         </div>

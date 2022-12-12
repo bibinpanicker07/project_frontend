@@ -34,6 +34,7 @@ export default function Product(props) {
         alert(response.data)
       });
   }
+  var item=1;
   const Increment = (data,payload,id) => {
       if (data == 'INCREMENT') {
       const objIndex = product.findIndex((obj => obj.id == id));
@@ -51,6 +52,7 @@ export default function Product(props) {
     setProduct(product);
     }
 }
+
  
   return (
     <div className="container-fluid p-5" >
