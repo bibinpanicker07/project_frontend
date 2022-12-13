@@ -5,7 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
 import background from "../img/signup.jpg";
 import './signup.css';
+import './login.css';
 import {Link,useNavigate} from "react-router-dom"
+import validator from 'validator'
 
 let themeDefault = ''
 
@@ -16,15 +18,7 @@ function Login() {
     const [user, setUser] = useState({email: "",
     password: "",});
 
-    const SButton = styled.button`
-    background-color: #314402;
-    color: white;
-    font-size: 20px;
-    flex-wrap: wrap;
-    padding: 15px 145px;
-    border-radius: 5px;
-    margin: 4.2rem 0px;
-    cursor: pointer;`
+   
 
     function postUser(e) {
         e.preventDefault();
@@ -37,10 +31,36 @@ function Login() {
             navigate("/AllCategories");
 
           }).catch((error)=>{
+            if(status===true){
             alert("Incorrect Email Id or password ")
+            }
            });
       }
-     
+      const [emailError, setEmailError] = useState('')
+      const [passError, setPassError] = useState('')
+  var status=false;
+      const validateEmail = (e) => {
+  
+          if (user.email.length!=0) {
+              setEmailError('')
+  
+          } else {
+              setEmailError('Enter your Email!')
+          }
+  
+          if (user.password.length!=0) {
+            
+              setPassError('')
+          } else {
+              setPassError('Enter your password!')
+          }
+  
+          if((user.email.length!=0)&&(user.email.length!=0)){
+            status=true;
+              postUser(e);
+          }
+  
+      }
       const myStyle={
         backgroundImage: `url(${background})`,
         height:'100vh',
@@ -63,6 +83,7 @@ function Login() {
                         onChange={(e) => setUser({...user,email:e.target.value})}
                         className="input"    />
                 </label><br></br>
+                <span className='error'>{emailError}</span><br></br>
                 <label className='label'>Password<br></br>
                     <input
                         type="password"
@@ -70,9 +91,10 @@ function Login() {
                         onChange={(e) => setUser({...user,password:e.target.value})}
                   className="input"  />
                 </label><br></br>
+                <span className='error'>{passError}</span><br></br>
                 
-                <SButton onClick={(e)=> {postUser(e);
-                }}>Login</SButton >
+                <button className='sbtn' onClick={(e)=> {validateEmail(e);
+                }}>Login</button >
                 
                  </form>
 

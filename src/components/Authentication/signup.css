@@ -25,3 +25,20 @@
     font-size: 1.5rem;
     font-weight: 700;
 }
+.error{
+    font-weight : bold;
+    color: red;
+    font-size: 1rem;
+    
+}
+
+.sbtn{
+    background-color: #314402;
+    color: white;
+    font-size: 20px;
+    flex-wrap: wrap;
+    padding: 15px 145px;
+    border-radius: 5px;
+    margin: 4.2rem 0px;
+    cursor: pointer;
+    }

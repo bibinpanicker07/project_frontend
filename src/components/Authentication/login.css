@@ -12,7 +12,7 @@
 }
 .form{
     margin-top: 0px;
-    padding-top: 11rem;
+    padding-top: 10rem;
     padding-left: 20rem;
     font-size: 0.5rem;
 
@@ -27,7 +27,34 @@
 
 .label{
     color: #dba600;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
     font-size: 1.5rem;
     font-weight: 700;
 }
+.error{
+    font-weight : bold;
+    color: red;
+    font-size: 1rem;
+    
+}
+
+.sbtn{
+background-color: #314402;
+color: white;
+font-size: 20px;
+flex-wrap: wrap;
+padding: 15px 145px;
+border-radius: 5px;
+margin: 4.2rem 0px;
+cursor: pointer;
+}
+
+ .myStyle{
+    background-image: url("../img/signup.jpg");
+    height:100vh;
+    margin-top :0px;
+    font-size:30px,
+    /* background-size: cover;
+    backgroundRepeat: no-repeat; */
+};
+

@@ -14,7 +14,7 @@ function CategoryLists(props){
             <div className={"d-flex justify-content-evenly"}>
             {props?.categories?.map((item, index) => {
                 return(
-                    <Link to={`/${item.id}`} key={index}>
+                    <Link style={{textDecoration: 'none',color: '#314402'}} to={`/${item.id}`} key={index}>
                     <div className={classes.item} >
                     <div >
                         <div className={'img-fluid ' + classes.image}>

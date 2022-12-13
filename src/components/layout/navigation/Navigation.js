@@ -14,9 +14,12 @@ function Navigation() {
             id="navbarSupportedContent"
           >
             <div className="ms-auto cartMainContainer">
-              <Link to="/cart">
+              <Link style={{textDecoration: 'none'}} to="/cart">
                 <FaShoppingCart className="iconSetup" size={28} />
                 <span className="cartTextSetup">Cart</span>
+              </Link>
+              <Link style={{textDecoration: 'none'}} to="/" >
+                <span className="cartTextSetup1">Logout</span>
               </Link>
             </div>
           </div>

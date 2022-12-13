@@ -1,4 +1,3 @@
-
 import Navigation from '../layout/navigation/Navigation';
 import './Order.css';
 import React, { useState, useEffect } from "react";
@@ -11,6 +10,56 @@ import { useNavigate } from "react-router-dom";
 function Order() {
     const navigate = useNavigate();
     const [cart, setCart] = useState([]);
+    const [amount, setamount] = useState();
+    
+    const handlesubmit = (e) => {
+        e.preventDefault();
+    
+        if (amount === "") {
+          alert("please enter amount");
+        } else {
+          var options = {
+            key: "rzp_test_LLKoI7P3DwwpEE",
+            key_secret: "ZwsvP9HGgxZANcYzgNGozKyM",
+            amount: amount * 100,
+            currency: "INR",
+            name: "Grocery Shop",
+            description: "Thank you for shopping",
+            handler: function (response) {
+              // alert(response.razorpay_payment_id);
+              axios.delete(`http://localhost:8080/cart/delete/?token=${themeDefault}`);
+              axios
+                .post(
+                  `http://localhost:8080/order/placeorder?token=${themeDefault}`,
+                  user
+                )
+                .then((response) => {
+                  console.log(response.data);
+                  alert("Order Placed successfully!!!");
+                  navigate("/AllCategories");
+                })
+                .catch((error) => {
+                  alert("Enter All Details ");
+                });
+    
+            },
+            profill: {
+              name: "Nasreena",
+              email: "nasreenaparvin95@gmail.com",
+              contact: "9745627110",
+            },
+            notes: {
+              address: "Razorpay corporate office",
+            },
+            theme: {
+              color: "#3399cc",
+            },
+          };
+          var pay = new window.Razorpay(options);
+          pay.open();
+        }
+        postUser(e);  
+      };
     useEffect(() => {
         axios
             .get(
@@ -19,6 +68,7 @@ function Order() {
             .then((response) => {
                 // console.log(response.data);
                 setCart(response.data);
+                setamount(response.data.totalCost);
             });
     }, []);
 
@@ -30,41 +80,45 @@ function Order() {
     });
     user.checkOut = cart
     const [mobError, setMobError] = useState('')
+    const [nameError, setNameError] = useState('')
+    const [addressrror, setAddressError] = useState('')
 
-
+    function postUser(e) {
+        e.preventDefault();
+        //console.log(user); 
+        
+      }
     const validateMobile = (e) => {
-
-
-        if (validator.isMobilePhone(user.contactNumber)) {
+        if (validator.isMobilePhone(user.contactNumber)&& (user.contactNumber.length===10)) {
 
             setMobError('')
-            postUser(e);
+            
         } else {
             setMobError('Enter valid Contact Number!')
         }
+        if (user.fullName!='') {
 
+            setNameError('')
+        } else {
+            setNameError('Name should not be empty!')
+        }
 
+        if (user.fullAddress!='') {
+            setAddressError('')
+           
+        } else {
+            setAddressError('Address should not be empty!')
+        }
+
+        if((validator.isMobilePhone(user.contactNumber)&& (user.contactNumber.length===10))&&(user.fullName!='')&&(user.fullAddress!='')){
+            handlesubmit(e);
+           // postUser(e);
+        }
 
     }
-    function postUser(e) {
-        e.preventDefault();
-        //console.log(user);
-        console.log(user.checkOut)
-        console.log(user.fullAddress)
-        console.log(user.fullName)
-        axios
-            .post("http://localhost:8080/order/placeorder?token=8c1616e6-20c9-4a39-9263-cc7033c09338", user)
-            .then((response) => {
-                console.log(response.data);
-                alert("Order Placed successfully!!!");
-                navigate("/AllCategories");
-
-
-            }).catch((error) => {
-                alert("Enter All Details ")
-            });
-    }
-
+    
+   
+  
 
     return (
         <>
@@ -82,6 +136,7 @@ function Order() {
                                 <div className="col-md-6">
                                     <label for="validationCustom01" className="form-label">Full name</label>
                                     <input type="text" className="form-control" id="validationCustom01" value={user.fullName} required onChange={(e) => setUser({ ...user, fullName: e.target.value })} />
+                                    <br></br> <span className='error'>{nameError}</span><br></br>
                                     <div className="valid-feedback">
                                         Looks good!
                                     </div>
@@ -89,10 +144,7 @@ function Order() {
                                 <div className="col-md-6">
                                     <label for="validationCustom02" className="form-label">Phone Number</label>
                                     <input type="text" className="form-control" id="validationCustom02" value={user.contactNumber} required onChange={(e) => setUser({ ...user, contactNumber: e.target.value })} />
-                                    <br></br> <span style={{
-                                        fontWeight: 'bold',
-                                        color: 'red', fontSize: 15,
-                                    }}>{mobError}</span><br></br>
+                                    <br></br> <span className='error'>{mobError}</span><br></br>
                                     <div className="valid-feedback">
                                         Looks good!
                                     </div>
@@ -101,6 +153,7 @@ function Order() {
                                 <div className="col-md-12">
                                     <label for="validationCustom03" className="form-label">Address</label>
                                     <input type="text" className="form-control" id="validationCustom03" value={user.fullAddress} required onChange={(e) => setUser({ ...user, fullAddress: e.target.value })} />
+                                    <br></br> <span className='error'>{addressrror}</span><br></br>
                                     <div className="invalid-feedback">
                                         Please provide a valid city.
                                     </div>
