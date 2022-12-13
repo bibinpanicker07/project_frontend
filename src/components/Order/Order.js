@@ -11,7 +11,7 @@ function Order() {
     const navigate = useNavigate();
     const [cart, setCart] = useState([]);
     const [amount, setamount] = useState();
-    
+    const [transaction, setTransaction] = useState();
     const handlesubmit = (e) => {
         e.preventDefault();
     
@@ -26,14 +26,20 @@ function Order() {
             name: "Grocery Shop",
             description: "Thank you for shopping",
             handler: function (response) {
-              // alert(response.razorpay_payment_id);
-              axios.delete(`http://localhost:8080/cart/delete/?token=${themeDefault}`);
+              alert(response.razorpay_payment_id);
+              //transaction=response.razorpay_payment_id;
+              setTransaction(response.razorpay_payment_id);
+              //console.log(transaction);
+                // console.log(user.transactionId);
+              
               axios
                 .post(
                   `http://localhost:8080/order/placeorder?token=${themeDefault}`,
                   user
                 )
                 .then((response) => {
+                    axios.delete(`http://localhost:8080/cart/delete/?token=${themeDefault}`);
+                    console.log(user.transactionId);
                   console.log(response.data);
                   alert("Order Placed successfully!!!");
                   navigate("/AllCategories");
@@ -66,7 +72,7 @@ function Order() {
                 `http://localhost:8080/cart/?token=${themeDefault}`
             )
             .then((response) => {
-                // console.log(response.data);
+                 console.log(response.data);
                 setCart(response.data);
                 setamount(response.data.totalCost);
             });
@@ -76,8 +82,11 @@ function Order() {
         fullName: "",
         fullAddress: "",
         contactNumber: "",
-        checkOut: {}
+        checkOut: {},
+        transactionId:"",
     });
+    
+    user.transactionId=transaction;
     user.checkOut = cart
     const [mobError, setMobError] = useState('')
     const [nameError, setNameError] = useState('')
