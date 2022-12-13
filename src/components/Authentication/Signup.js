@@ -9,9 +9,9 @@ import axios from "axios";
 function SignUp() {
     const navigate = useNavigate();
     const [user, setUser] = useState({
-        fname:"",
-        lname:"",
         email: "",
+        firstName:"",
+        lastName:"",
         password: "",
     });
     function postUser(e) {
@@ -54,14 +54,14 @@ function SignUp() {
                         <input
                             type="text"
                              value={user.fname}
-                             onChange={(e) => setUser({...user,fname:e.target.value})}
+                             onChange={(e) => setUser({...user,firstName:e.target.value})}
                             className="input" />
                     </label><br></br>
                     <label className='label'>Last Name<br></br>
                         <input
                             type="text"
                             value={user.lname}
-                            onChange={(e) => setUser({...user,lname:e.target.value})}
+                            onChange={(e) => setUser({...user,lastName:e.target.value})}
                             className="input" />
                     </label><br></br>
                     <label className='label'>Email Id<br></br>

@@ -11,6 +11,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <App />
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
   </BrowserRouter>
 );
 

@@ -2,12 +2,6 @@ import { Link } from "react-router-dom";
 import classes from "./CategoryList.module.css"
 function CategoryLists(props){
 
-    const onSubmitHandler = (event) =>{
-        console.log(event)
-        event.preventDefault();
-      };
-    
-
     return(
         
         <div className={"container-fluid pt-3  " + classes.categoryList}>
