@@ -6,9 +6,16 @@ import Navigation from "../navigation/Navigation";
 import { Link } from "react-router-dom";
 import { themeDefault } from '../../Authentication/Login'
 import {useNavigate} from "react-router-dom";
+
+
+
+
 export default function Cart() {
+
+  
   const navigate=useNavigate();
   const [cart, setCart] = useState([]);
+  
   useEffect(() => {
     axios
       .get(
@@ -33,6 +40,7 @@ export default function Cart() {
         quantity: quantityX,
       };
       console.log(requestBody);
+      
       axios
         .put(
           `http://localhost:8080/cart/update/?token=${themeDefault}`,
@@ -159,3 +167,5 @@ export default function Cart() {
     </>
   );
 }
+
+

@@ -8,7 +8,7 @@ import React from "react";
 
 export default function AllCategories(props) {
   const [category, setCategory] = useState([]);
-  const [categories, setCategories] = useState();
+ 
   useEffect(() => {
     axios.get("http://localhost:8080/category/").then((response) => {
       setCategory(response.data);
@@ -20,9 +20,9 @@ export default function AllCategories(props) {
   return (
     <div className="container-fluid p-0">
       <div>
-      <Navigation />
+      {/* <Navigation /> */}
         <CategoryLists categories={category} />
-        <Product setCmp={categories} />
+        <Product />
       </div>
     </div>
   );

@@ -3,9 +3,12 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./product.module.css";
 import { useParams } from "react-router-dom";
-import { themeDefault } from '../Authentication/Login'
+import { themeDefault } from '../Authentication/Login';
+import Navigation from "../layout/navigation/Navigation";
+
 
 export default function Product(props) {
+  const [c,setC] = useState(0);
   const [isShown, setIsShown] = useState(false);
 
   const params = useParams();
@@ -26,6 +29,7 @@ export default function Product(props) {
   }, [params.id]);
 
   const addCartProduct = (itemId, itemCount) => {
+setC(1);
     setIsShown((current) => !current);
     let requestBody = {
       productId: itemId,
@@ -35,6 +39,7 @@ export default function Product(props) {
       .post(`http://localhost:8080/cart/add?token=${themeDefault}`, requestBody)
       .then((response) => {
         alert(response.data);
+       // count=response.data.cartItems.length;
       });
   };
   const Increment = (data, payload, id) => {
@@ -60,7 +65,8 @@ export default function Product(props) {
     }
   };
 
-  return (
+  return (<>
+    <Navigation/>
     <div className="container-fluid p-5">
       <div>
         <div
@@ -126,18 +132,6 @@ export default function Product(props) {
                             Add to cart
                           </button>
 
-              
-                       
-                       
-                       
-                       
-                       
-                       
-                       
-                       
-                       
-                       
-                       
                        
                        
                         </div>
@@ -151,5 +145,6 @@ export default function Product(props) {
         </div>
       </div>
     </div>
+    </>
   );
 }
