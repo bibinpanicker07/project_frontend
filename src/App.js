@@ -6,12 +6,14 @@ import Cart from './components/layout/Cart/cart';
 import Login from "./components/Authentication/Login";
 import SignUp from './components/Authentication/Signup';
 import Order from './components/Order/Order';
-import OrderHistory from './components/OrderHistory/OrderHistory';
+import YourOrder from './components/yourOrder/YourOrder';
 import ProtectedRoutes from './In ProtectedRoutes';
 import {isAuth} from './components/layout/navigation/Navigation';
 import {useNavigate} from "react-router-dom";
-import AddProducts from './components/AddProducts/AddProducts';
-import AddCategory from './components/AddCategory/AddCategory';
+import AddProducts from './components/admin/AddProducts/AddProducts';
+import AddCategory from './components/admin/AddCategory/AddCategory';
+import AdminAllCategories from './components/admin/AdminCategory/AdminAllCategories';
+import AdminProductListById from './components/admin/AdminCategory/AdminProductById';
 function App() {
   const navigate=useNavigate();
   return (
@@ -29,9 +31,12 @@ function App() {
       <Route path="/:id" element={<ProductListById />}></Route>
       <Route path="/cart" element={<Cart />}></Route>
       <Route path="/order" element={<Order/>}></Route>
-      <Route path="/yourOrders" element={<OrderHistory/>}></Route>
-      <Route path="/AddProducts" element={<AddProducts/>}></Route>
-      <Route path="/AddCategory" element={<AddCategory/>}></Route>
+      <Route path="/yourOrders" element={<YourOrder />}></Route>
+      <Route path="/AddProducts" element={<AddProducts />}></Route>
+      <Route path="/AddCategory" element={<AddCategory />}></Route>
+      <Route path="/AdminAllCategories" element={<AdminAllCategories />}></Route>
+      <Route path="/admin/:id" element={<AdminProductListById />}></Route>
+
       {/* </Route> */}
       </Routes>
       

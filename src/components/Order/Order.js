@@ -9,9 +9,9 @@ import { useNavigate } from "react-router-dom";
 
 function Order() {
     const navigate = useNavigate();
-    const [cart, setCart] = useState([]);
+    const [carts, setCarts] = useState([]);
     const [amount, setamount] = useState();
-    const [transaction, setTransaction] = useState();
+    // const [transaction, setTransaction] = useState();
     const handlesubmit = (e) => {
         e.preventDefault();
     
@@ -26,19 +26,14 @@ function Order() {
             name: "Grocery Shop",
             description: "Thank you for shopping",
             handler: function (response) {
-              alert(response.razorpay_payment_id);
+            //   alert(response.razorpay_payment_id);
               //transaction=response.razorpay_payment_id;
-              setTransaction(response.razorpay_payment_id);
+            //   setTransaction(response.razorpay_payment_id);
               //console.log(transaction);
                 // console.log(user.transactionId);
-              
-              axios
-                .post(
-                  `http://localhost:8080/order/placeorder?token=${themeDefault}`,
-                  user
-                )
+                axios.delete(`http://localhost:8080/cart/delete/?token=${themeDefault}`)
                 .then((response) => {
-                    axios.delete(`http://localhost:8080/cart/delete/?token=${themeDefault}`);
+                    axios.post(`http://localhost:8080/order/placeorder?token=${themeDefault}`, user)
                     console.log(user.transactionId);
                   console.log(response.data);
                   alert("Order Placed successfully!!!");
@@ -73,7 +68,7 @@ function Order() {
             )
             .then((response) => {
                  console.log(response.data);
-                setCart(response.data);
+                setCarts(response.data);
                 setamount(response.data.totalCost);
             });
     }, []);
@@ -82,12 +77,9 @@ function Order() {
         fullName: "",
         fullAddress: "",
         contactNumber: "",
-        checkOut: {},
-        transactionId:"",
+        amount: 0
     });
-    
-    user.transactionId=transaction;
-    user.checkOut = cart
+    user.amount=amount;
     const [mobError, setMobError] = useState('')
     const [nameError, setNameError] = useState('')
     const [addressrror, setAddressError] = useState('')
@@ -180,7 +172,7 @@ function Order() {
                         <div id="flush-collapseTwo" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo" data-bs-parent="#accordionFlushExample">
                             <div className="accordion-body">
                                 <div className="card-text" id="navbar-example">
-                                    {cart?.cartItems?.map((item, index) => {
+                                    {carts?.cartItems?.map((item, index) => {
                                         return (
                                             <div className="row p-3" key={index}>
                                                 <div className="col-md-8 d-flex">
@@ -219,7 +211,7 @@ function Order() {
                                     })}
                                     <div className="d-flex justify-content-evenly pt-5 pb-5">
                                         <div className={styles.totalAmt}>
-                                            Total amount :<span> &#8377;{cart?.totalCost}</span>{" "}
+                                            Total amount :<span> &#8377;{carts?.totalCost}</span>{" "}
                                         </div>
                                         <div>
                                             <button className="btn btn-success" type="submit" onClick={(e) => {

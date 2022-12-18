@@ -9,11 +9,7 @@ import './login.css';
 import {Link,useNavigate} from "react-router-dom"
 import {isAuth} from '../layout/navigation/Navigation';
 
-
 let themeDefault = ''
-
-
-
 function Login() {
     const navigate=useNavigate();
     const [user, setUser] = useState({email: "",

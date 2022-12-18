@@ -42,6 +42,9 @@ function Navigation() {
                 </Badge>
                 <span className="cartTextSetup">Cart</span>
               </Link>
+              <Link style={{ textDecoration: "none" }} to="/yourOrders">
+                <span className="cartTextSetup1">Your Orders</span>
+              </Link>
               <Link style={{textDecoration: 'none'}} to="/" onClick={isAuth=false} >
                 <span className="cartTextSetup1" onClick={logout}>Logout</span>
               </Link>

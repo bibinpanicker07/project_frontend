@@ -1,0 +1,21 @@
+.heading{
+    color: rgb(3, 48, 3);
+    font-size: 30px;
+    font-weight: 600;
+    /* padding: 15px 15px 0px 0px; */
+
+}
+.crdSetup{
+    border: 0px;
+}
+.btnStyle{
+    border: 0px;
+    background-color: transparent;
+    font-size: large;
+}
+.counterSet{
+    padding-right: 5px;
+}
+.products{
+    padding-top: 10%;
+}
