@@ -4,8 +4,9 @@ import { useState } from "react";
 import styles from "./AddCategory.module.css";
 import axios from "axios";
 import { themeDefault } from "../../Authentication/Login";
+import {useNavigate} from "react-router-dom"
 function AddCategory() {
-  
+  const navigate=useNavigate();
   const [category, setCategory] = useState({
     categoryName: "",
     description: "",
@@ -13,12 +14,21 @@ function AddCategory() {
   });
   
   function addCategory(e) {
+    e.preventDefault();
+    if(themeDefault==='55983344-98ce-46b4-aa8e-710abdd0350c')
+    {
     axios
-      .post(`http://localhost:8080/category/?token=ef8100d9-d420-4f17-8f50-0a6e124c8194`, category)
+      .post(`http://localhost:8080/category/?token=${themeDefault}`, category)
       .then((response) => {
         alert(response.data);
     
-  })
+  }).catch((error)=>{
+    alert("Enter all details");
+    //navigate("/");
+   });}else{
+    alert("You are not an Admin..");
+        navigate("/");
+   }
 }
   return (
     <>

@@ -26,6 +26,9 @@ function AdminNavigation() {
               <Link style={{ textDecoration: "none" }} to="/AddProducts">
                 <span className="cartTextSetup1">Add Product </span>
               </Link>
+              <Link style={{ textDecoration: "none" }} to="/AdminOrders">
+                <span className="cartTextSetup1">Orders </span>
+              </Link>
               <Link style={{textDecoration: 'none'}} to="/" onClick={isAuth=false} >
                 <span className="cartTextSetup1" onClick={logout}>Logout</span>
               </Link>

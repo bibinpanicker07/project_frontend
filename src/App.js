@@ -14,6 +14,8 @@ import AddProducts from './components/admin/AddProducts/AddProducts';
 import AddCategory from './components/admin/AddCategory/AddCategory';
 import AdminAllCategories from './components/admin/AdminCategory/AdminAllCategories';
 import AdminProductListById from './components/admin/AdminCategory/AdminProductById';
+import AdminOrders from './components/admin/AdminOrders/AdminOrders';
+
 function App() {
   const navigate=useNavigate();
   return (
@@ -36,7 +38,7 @@ function App() {
       <Route path="/AddCategory" element={<AddCategory />}></Route>
       <Route path="/AdminAllCategories" element={<AdminAllCategories />}></Route>
       <Route path="/admin/:id" element={<AdminProductListById />}></Route>
-
+      <Route path="/AdminOrders" element={<AdminOrders />}></Route>
       {/* </Route> */}
       </Routes>
       

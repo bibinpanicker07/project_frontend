@@ -24,7 +24,11 @@ function Login() {
           .then((response) => {
             console.log(response.data);
             themeDefault = response.data.token;
+            if(themeDefault==='55983344-98ce-46b4-aa8e-710abdd0350c'){
+                navigate("/AdminAllCategories")
+            }else{
             navigate("/AllCategories");
+            }
             //isAuth= true;
             localStorage.setItem('token-info', JSON.stringify(user));
             

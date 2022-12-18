@@ -1,0 +1,42 @@
+.cardSetup{
+    
+    margin-top: 10%;
+    border: 0px !important;
+}
+.headerCrd{
+    background-color: rgb(2, 68, 2);
+    border: 0px;
+}
+.orderMain{
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 1%;
+}
+.itemName{
+    font-size: 22px;
+    color: black;
+    line-height: 1;
+}
+.itemDes{
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.742);
+}
+.itemUser{
+    font-size: 18px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.742);
+}
+.productImg{
+    width: 12% !important;
+}
+.counterSet{
+    padding-right: 5px;
+    font-size: 18px;
+}
+.counterSet1{
+    padding-left: 50px;
+    font-size: 18px;
+}

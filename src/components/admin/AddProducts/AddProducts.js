@@ -4,7 +4,10 @@ import AdminNavigation from "../AdminNavigation/AdminNavigation";
 import styles from "./AddProducts.module.css";
 import { useState } from "react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
+import { themeDefault } from "../../Authentication/Login";
 function AddProducts() {
+  const navigate=useNavigate();
   const [product, setProduct] = useState({
     name: "",
     imageURL: "",
@@ -13,12 +16,23 @@ function AddProducts() {
     categoryName:""
   });
   function addProduct(e) {
+
+    e.preventDefault();
+    if(themeDefault==='55983344-98ce-46b4-aa8e-710abdd0350c')
+    {
     axios
-      .post(`http://localhost:8080/product/addProducts/?token=ef8100d9-d420-4f17-8f50-0a6e124c8194`, product)
+      .post(`http://localhost:8080/product/addProducts/?token=${themeDefault}`, product)
       .then((response) => {
         alert(response.data);
     
-  })
+  }).catch((error)=>{
+    alert("Enter all details");
+        //navigate("/");
+    }
+   );}else{
+    alert("You are not an Admin..");
+        navigate("/");
+   }
 }
   return (
     <>
