@@ -7,9 +7,10 @@ import axios from "axios";
 import { useEffect,useState} from "react";
 
 
-
+var isAuth =true;
 function Navigation() {
   const [count,setCount]=useState(0);
+ 
   useEffect(() => {
     axios
       .get(
@@ -18,8 +19,11 @@ function Navigation() {
       .then((response) => {        
         setCount(response.data.cartItems.length);
         console.log(count);
-      });
+      }); 
   }, []);
+  const logout = () => {  localStorage.clear();
+    window.location.href = '/';
+  };
   return (
     <div>
       <nav className="navbar navbars navbar-expand-lg fixed-top">
@@ -38,8 +42,8 @@ function Navigation() {
                 </Badge>
                 <span className="cartTextSetup">Cart</span>
               </Link>
-              <Link style={{textDecoration: 'none'}} to="/" >
-                <span className="cartTextSetup1">Logout</span>
+              <Link style={{textDecoration: 'none'}} to="/" onClick={isAuth=false} >
+                <span className="cartTextSetup1" onClick={logout}>Logout</span>
               </Link>
             </div>
           </div>
@@ -49,3 +53,4 @@ function Navigation() {
   );
 }
 export default Navigation;
+export {isAuth};

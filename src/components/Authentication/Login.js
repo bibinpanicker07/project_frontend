@@ -7,7 +7,8 @@ import background from "../img/signup.jpg";
 import './signup.css';
 import './login.css';
 import {Link,useNavigate} from "react-router-dom"
-import validator from 'validator'
+import {isAuth} from '../layout/navigation/Navigation';
+
 
 let themeDefault = ''
 
@@ -17,7 +18,6 @@ function Login() {
     const navigate=useNavigate();
     const [user, setUser] = useState({email: "",
     password: "",});
-
    
 
     function postUser(e) {
@@ -29,13 +29,16 @@ function Login() {
             console.log(response.data);
             themeDefault = response.data.token;
             navigate("/AllCategories");
-
+            //isAuth= true;
+            localStorage.setItem('token-info', JSON.stringify(user));
+            
           }).catch((error)=>{
             if(status===true){
             alert("Incorrect Email Id or password ")
             }
            });
       }
+     
       const [emailError, setEmailError] = useState('')
       const [passError, setPassError] = useState('')
   var status=false;
@@ -114,5 +117,6 @@ function Login() {
 
 
 export default Login;
+//export {logout};
 
 export { themeDefault }

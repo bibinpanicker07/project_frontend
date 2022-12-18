@@ -5,12 +5,12 @@ import styles from "./product.module.css";
 import { useParams } from "react-router-dom";
 import { themeDefault } from '../Authentication/Login';
 import Navigation from "../layout/navigation/Navigation";
-
+import {Link,useNavigate} from "react-router-dom"
 
 export default function Product(props) {
   const [c,setC] = useState(0);
   const [isShown, setIsShown] = useState(false);
-
+  const navigate=useNavigate();
   const params = useParams();
   console.log(params.id);
   const [product, setProduct] = useState([]);
@@ -39,8 +39,12 @@ setC(1);
       .post(`http://localhost:8080/cart/add?token=${themeDefault}`, requestBody)
       .then((response) => {
         alert(response.data);
+       
        // count=response.data.cartItems.length;
-      });
+      }).catch((error)=>{
+        alert("Please Login to Continue");
+        navigate("/");
+       });
   };
   const Increment = (data, payload, id) => {
     if (data == "INCREMENT") {
