@@ -3,11 +3,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./product.module.css";
 import { useParams } from "react-router-dom";
-import { themeDefault } from '../Authentication/Login';
 import Navigation from "../layout/navigation/Navigation";
 import {Link,useNavigate} from "react-router-dom"
 
+
 export default function Product(props) {
+ 
+  const themeDefault = localStorage.getItem("token")
+  
   const [c,setC] = useState(0);
   const [isShown, setIsShown] = useState(false);
   const navigate=useNavigate();

@@ -1,5 +1,4 @@
 import React from "react";
-import Product from "../../ProductList/product";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import AdminCategoryList from "./AdminCategoryList";

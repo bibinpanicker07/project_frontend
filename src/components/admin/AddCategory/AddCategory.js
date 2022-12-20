@@ -3,9 +3,9 @@ import AdminNavigation from "../AdminNavigation/AdminNavigation";
 import { useState } from "react";
 import styles from "./AddCategory.module.css";
 import axios from "axios";
-import { themeDefault } from "../../Authentication/Login";
 import {useNavigate} from "react-router-dom"
 function AddCategory() {
+  const themeDefault = localStorage.getItem("token")
   const navigate=useNavigate();
   const [category, setCategory] = useState({
     categoryName: "",
@@ -15,7 +15,7 @@ function AddCategory() {
   
   function addCategory(e) {
     e.preventDefault();
-    if(themeDefault==='55983344-98ce-46b4-aa8e-710abdd0350c')
+    if(themeDefault==='4faae151-dbb8-4af7-a518-9f118a274504')
     {
     axios
       .post(`http://localhost:8080/category/?token=${themeDefault}`, category)

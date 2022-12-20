@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./AdminProduct.module.css";
 import { useParams } from "react-router-dom";
-import { themeDefault } from '../../Authentication/Login';
 import {Link,useNavigate} from "react-router-dom"
 import AdminNavigation from "../AdminNavigation/AdminNavigation";
 

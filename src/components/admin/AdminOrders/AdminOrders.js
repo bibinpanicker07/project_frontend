@@ -1,32 +1,29 @@
-import { themeDefault } from "../../Authentication/Login";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./AdminOrders.module.css";
 import Accordion from "react-bootstrap/Accordion";
 import AdminNavigation from "../AdminNavigation/AdminNavigation";
 function AdminOrders() {
-    const navigate=useNavigate();
+  const navigate = useNavigate();
   const [cart, setCart] = useState([]);
   useEffect(() => {
-    if(themeDefault==='55983344-98ce-46b4-aa8e-710abdd0350c')
-    {
-    axios
-      .get(`http://localhost:8080/order/AllOrders/?token=${themeDefault}`)
-      .then((response) => {
-        setCart(response.data);
-      })
-      .catch((error)=>{
-        alert("Enter all details");
-            //navigate("/");
-        }
-       );}else{
-        alert("You are not an Admin..");
-            navigate("/");
-       }
- 
- 
-    }, []);
+    const themeDefault = localStorage.getItem("token")
+    if (themeDefault === "4faae151-dbb8-4af7-a518-9f118a274504") {
+      axios
+        .get(`http://localhost:8080/order/AllOrders/?token=${themeDefault}`)
+        .then((response) => {
+          setCart(response.data);
+        })
+        .catch((error) => {
+          alert("Enter all details");
+          //navigate("/");
+        });
+    } else {
+      alert("You are not an Admin..");
+      navigate("/");
+    }
+  }, []);
 
   return (
     <>
@@ -51,44 +48,41 @@ function AdminOrders() {
                     <Accordion>
                       <Accordion.Item eventKey="0">
                         <Accordion.Header>
-                        <div className={"col-md-4"}>    
-                                  <div className={"d-flex mx-auto"}>
-                                    <div className={styles.counterSet}>
-                                    Order Id : {item?.id} 
-                                    </div>
-                                    <div className={styles.counterSet1}>
-                                    Date : &#8377;{item?.date}
-                                    </div>
-                                  </div>                                                             
-                                </div>
+                          <div className={"col-md-4"}>
+                            <div className={"d-flex mx-auto"}>
+                              <div className={styles.counterSet}>
+                                Order Id : {item?.id}
+                              </div>
+                              <div className={styles.counterSet1}>
+                                Date : &#8377;{item?.date}
+                              </div>
+                            </div>
+                          </div>
                         </Accordion.Header>
                         <Accordion.Body>
-                        <div className="row p-3" key={index}>
-                                <div className="col-md-8 d-flex">
-                
-                                  <div
-                                    className="row"
-                                    style={{ marginLeft: "15px" }}
-                                  >
-                                    <div className={styles.itemUser}>
-                                      Customer Name : {item?.orderFullName}
-                                    </div>
-                                    <div className={styles.itemUser}>
-                                      Address : {item?.orderFullAddress}
-                                    </div>
-                                    <div className={styles.itemUser}>
-                                      Contact Number : {item?.orderContactNumber}
-                                    </div>
-                                    <div className={styles.itemUser}>
-                                      Total Amount : &#8377;{item.orderAmount}
-                                    </div>
-                                  </div>
+                          <div className="col">
+                          <div className="row p-3" key={index}>
+                            <div className="col-md-8 d-flex">
+                              <div
+                                className="row"
+                                style={{ marginLeft: "15px" }}
+                              >
+                                <div className={styles.itemUser}>
+                                  Customer Name : {item?.orderFullName}
                                 </div>
-
-                                
+                                <div className={styles.itemUser}>
+                                  Address : {item?.orderFullAddress}
+                                </div>
+                                <div className={styles.itemUser}>
+                                  Contact Number : {item?.orderContactNumber}
+                                </div>
+                                <div className={styles.itemUser}>
+                                  Total Amount : &#8377;{item.orderAmount}
+                                </div>
                               </div>
+                            </div>
+                          </div>
                           {item?.ocarts?.map((item1, index1) => {
-                            // total=item.quantity*item.product.price;
                             return (
                               <div className="row p-3" key={index1}>
                                 <div className="col-md-8 d-flex">
@@ -115,11 +109,10 @@ function AdminOrders() {
                                     </div>
                                   </div>
                                 </div>
-
-                                
                               </div>
                             );
                           })}
+                          </div>
                         </Accordion.Body>
                       </Accordion.Item>
                     </Accordion>
