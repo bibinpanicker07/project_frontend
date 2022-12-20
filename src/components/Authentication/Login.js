@@ -1,6 +1,6 @@
 
 import styled from 'styled-components';
-import React, { useState } from "react";
+import React, { useEffect,useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
 import background from "../img/signup.jpg";
@@ -15,7 +15,22 @@ function Login() {
     const [user, setUser] = useState({email: "",
     password: "",});
    
+    // useEffect(() => {
+    //     const loggedInUser = localStorage.getItem("user");
+    //     if (loggedInUser) {
+    //       const foundUser = JSON.parse(loggedInUser);
+    //       setUser(foundUser);
+    //     }
+    //   }, []);
+    const [token, setToken] = useState(1);
 
+  useEffect(() => {
+    setToken(JSON.parse(window.sessionStorage.getItem("token")));
+  }, []);
+
+  useEffect(() => {
+    window.sessionStorage.setItem("token", themeDefault);
+  }, [token]);
     function postUser(e) {
         e.preventDefault();
         console.log(user);
@@ -30,7 +45,8 @@ function Login() {
             navigate("/AllCategories");
             }
             //isAuth= true;
-            localStorage.setItem('token-info', JSON.stringify(user));
+           // localStorage.setItem('token-info', JSON.stringify(user));
+           localStorage.setItem('user', response.data);
             
           }).catch((error)=>{
             if(status===true){

@@ -14,7 +14,13 @@ export default function Product(props) {
   const params = useParams();
   console.log(params.id);
   const [product, setProduct] = useState([]);
-
+  // useEffect(() => {
+  //   const loggedInUser = localStorage.getItem("user");
+  //   if (loggedInUser) {
+  //     const foundUser = JSON.parse(loggedInUser);
+  //     setUser(foundUser);
+  //   }
+  // }, []);
   useEffect(() => {
     if (params.id) {
       const setID = params.id;
