@@ -2,16 +2,14 @@ import { Link } from "react-router-dom";
 import "./Navigation.css";
 import { FaShoppingCart } from "react-icons/fa";
 import Badge from "@material-ui/core/Badge";
-import { themeDefault } from '../../Authentication/Login';
 import axios from "axios";
 import { useEffect,useState} from "react";
-
-
 var isAuth =true;
 function Navigation() {
   const [count,setCount]=useState(0);
  
   useEffect(() => {
+    const themeDefault = localStorage.getItem("token")
     axios
       .get(
         `http://localhost:8080/cart/?token=${themeDefault}`

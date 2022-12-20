@@ -7,8 +7,6 @@ import Login from "./components/Authentication/Login";
 import SignUp from './components/Authentication/Signup';
 import Order from './components/Order/Order';
 import YourOrder from './components/yourOrder/YourOrder';
-import ProtectedRoutes from './In ProtectedRoutes';
-import {isAuth} from './components/layout/navigation/Navigation';
 import {useNavigate} from "react-router-dom";
 import AddProducts from './components/admin/AddProducts/AddProducts';
 import AddCategory from './components/admin/AddCategory/AddCategory';

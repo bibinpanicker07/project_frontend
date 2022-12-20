@@ -1,13 +1,13 @@
-import { themeDefault } from "../Authentication/Login";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Navigation from "../layout/navigation/Navigation";
 import styles from "./YourOrder.module.css";
 import Accordion from "react-bootstrap/Accordion";
 function OrderHistory(props) {
-  var total = 0;
+
   const [cart, setCart] = useState([]);
   useEffect(() => {
+    const themeDefault = localStorage.getItem("token")
     axios
       .get(`http://localhost:8080/order/?token=${themeDefault}`)
       .then((response) => {
@@ -32,7 +32,6 @@ function OrderHistory(props) {
           >
             <div className="card-text" id="navbar-example">
               {cart?.map((item, index) => {
-                // total=item.quantity*item.product.price;
                 return (
                   <div>
                     <Accordion>

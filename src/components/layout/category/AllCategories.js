@@ -1,4 +1,3 @@
-import { Component } from "react";
 import Product from "../../ProductList/product";
 import CategoryLists from "./CategoryLists";
 import { useEffect, useState } from "react";

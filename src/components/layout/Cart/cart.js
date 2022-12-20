@@ -3,14 +3,10 @@ import styles from "./cart.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Navigation from "../navigation/Navigation";
-import { Link } from "react-router-dom";
-import { themeDefault } from '../../Authentication/Login'
 import {useNavigate} from "react-router-dom";
 
-
-
-
 export default function Cart() {
+  const themeDefault = localStorage.getItem("token")
 
   
   const navigate=useNavigate();

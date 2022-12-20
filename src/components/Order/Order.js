@@ -4,10 +4,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import validator from 'validator'
 import styles from "../layout/Cart/cart.module.css";
-import { themeDefault } from '../Authentication/Login';
 import { useNavigate } from "react-router-dom";
 
 function Order() {
+    const themeDefault = localStorage.getItem("token")
     const navigate = useNavigate();
     const [carts, setCarts] = useState([]);
     const [amount, setamount] = useState();
