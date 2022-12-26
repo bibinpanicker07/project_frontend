@@ -9,7 +9,7 @@ function AdminOrders() {
   const [cart, setCart] = useState([]);
   useEffect(() => {
     const themeDefault = localStorage.getItem("token")
-    if (themeDefault === "4faae151-dbb8-4af7-a518-9f118a274504") {
+    if (localStorage.getItem("role")==="admin") {
       axios
         .get(`http://localhost:8080/order/AllOrders/?token=${themeDefault}`)
         .then((response) => {

@@ -1,12 +1,12 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./AdminProduct.module.css";
 import { useParams } from "react-router-dom";
-import {Link,useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 import AdminNavigation from "../AdminNavigation/AdminNavigation";
 
-export default function AdminProduct(props) {
+export default function AdminProduct() {
   const [isShown, setIsShown] = useState(false);
   const navigate=useNavigate();
   const params = useParams();
@@ -65,6 +65,7 @@ export default function AdminProduct(props) {
                               &#8377; {item.price}
                             </small>
                           </p>
+                          
                         </div>
                       </div>
                     </div>

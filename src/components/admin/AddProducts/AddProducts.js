@@ -1,11 +1,14 @@
 import React from "react";
-import Product from "../../ProductList/product";
 import AdminNavigation from "../AdminNavigation/AdminNavigation";
 import styles from "./AddProducts.module.css";
-import { useState } from "react";
+import { useEffect,useState } from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 function AddProducts() {
+
+
+
+
   const themeDefault = localStorage.getItem("token")
   const navigate=useNavigate();
   const [product, setProduct] = useState({
@@ -16,9 +19,8 @@ function AddProducts() {
     categoryName:""
   });
   function addProduct(e) {
-
     e.preventDefault();
-    if(themeDefault==='4faae151-dbb8-4af7-a518-9f118a274504')
+    if(localStorage.getItem("role")==="admin")
     {
     axios
       .post(`http://localhost:8080/product/addProducts/?token=${themeDefault}`, product)

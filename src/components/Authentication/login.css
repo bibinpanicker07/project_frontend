@@ -1,3 +1,12 @@
+.body{
+    background-image: url(/src/components/img/signup.jpg);
+    height:50rem;
+    background-position: center;
+    /* margin-top: 0px; */
+    background-size: cover;
+    background-repeat: no-repeat;   
+}
+
 .square1{
     display: inline-block;
     width: 600px;
@@ -51,7 +60,7 @@ cursor: pointer;
 
  .myStyle{
     background-image: url("../img/signup.jpg");
-    height:100vh;
+    /* height:60rem; */
     margin-top :0px;
     font-size:30px,
     /* background-size: cover;

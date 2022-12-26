@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Navigation from "../layout/navigation/Navigation";
 import styles from "./YourOrder.module.css";
 import Accordion from "react-bootstrap/Accordion";
-function OrderHistory(props) {
+function OrderHistory() {
 
   const [cart, setCart] = useState([]);
   useEffect(() => {

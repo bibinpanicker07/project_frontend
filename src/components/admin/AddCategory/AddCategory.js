@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AdminNavigation from "../AdminNavigation/AdminNavigation";
 import { useState } from "react";
 import styles from "./AddCategory.module.css";
 import axios from "axios";
 import {useNavigate} from "react-router-dom"
 function AddCategory() {
+
+
+
   const themeDefault = localStorage.getItem("token")
   const navigate=useNavigate();
   const [category, setCategory] = useState({
@@ -15,7 +18,7 @@ function AddCategory() {
   
   function addCategory(e) {
     e.preventDefault();
-    if(themeDefault==='4faae151-dbb8-4af7-a518-9f118a274504')
+    if(localStorage.getItem("role")==="admin")
     {
     axios
       .post(`http://localhost:8080/category/?token=${themeDefault}`, category)

@@ -1,10 +1,9 @@
-import React, { useRef } from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./product.module.css";
 import { useParams } from "react-router-dom";
 import Navigation from "../layout/navigation/Navigation";
-import {Link,useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 
 
 export default function Product(props) {

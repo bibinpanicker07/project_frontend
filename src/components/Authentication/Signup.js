@@ -1,4 +1,3 @@
-import background from "../img/signup.jpg";
 import './signup.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, useNavigate } from "react-router-dom"
@@ -56,57 +55,77 @@ function SignUp() {
                 alert("Enter your details correctly")
             });
     }
-    const myStyle = {
-        backgroundImage: `url(${background})`,
-        height: '100vh',
-        marginTop: '0px',
-        fontSize: '30px',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-    };
-    return (
-        <div style={myStyle}>
-            <div className='form'>
-                <h1 className='welcome'>Create New Account</h1>
-                <form >
-                    <label className='label'>First Name<br></br>
-                        <input
-                            type="text"
-                            value={user.firstName}
-                            onChange={(e) => setUser({ ...user, firstName: e.target.value })}
-                            className="input" />
-                    </label><br></br>
-                    <label className='label'>Last Name<br></br>
-                        <input
-                            type="text"
-                            value={user.lastName}
-                            onChange={(e) => setUser({ ...user, lastName: e.target.value })}
-                            className="input" />
-                    </label><br></br>
-                    <label className='label'>Email Id<br></br>
-                        <input
-                            type="email"
-                            value={user.email}
-                            onChange={(e) => setUser({ ...user, email: e.target.value })}
-                            className="input" />
-                    </label><br></br>
-                    <span className='error'>{emailError}</span><br></br>
-                    <label className='label'>Password<br></br>
-                        <input
-                            type="password"
-                            value={user.password}
-                            onChange={(e) => setUser({ ...user, password: e.target.value })}
-                            className="input" />
-                    </label><br></br>
-                    <span className='error'>{passError}</span><br></br>
-                    <button className="sbtn" onClick={(e) => {
-                        validateEmail(e);
-                    }} >SignUp</button >
-                </form>
-                <h5>Already has an account?
 
-                    <Link to="/">Login</Link>
-                </h5>
+    return (
+        <div className='body'>
+            <div className="container py-4 h-100">
+                <div className="row d-flex justify-content-left  align-items-center h-100 ">
+                    <div class="row d-flex justify-content-left">
+                        <div class="col-lg-8">
+
+                            <div className=" text-left mt-1 mb-1 pb-1">
+                                <h1 className="mt-1 mb-5 pb-1">
+                                    <p className='welcome'>Create New Account</p></h1>
+                                <form >
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <label className='label'>
+                                                <div className="text-left mt-1 mb-1 pb-1"> First Name</div>
+                                                <div className="form-outline mb-4">
+                                                    <input
+                                                        type="text"
+                                                        value={user.firstName}
+                                                        onChange={(e) => setUser({ ...user, firstName: e.target.value })}
+                                                        className="input" /></div>
+                                            </label></div>
+                                        <div class="col-md-6 mb-4">
+                                            <label className='label'><div className="text-left mt-1 mb-1 pb-1 "> Last Name</div>
+                                                <div className="form-outline mb-4  ">
+                                                    <input
+                                                        type="text"
+                                                        value={user.lastName}
+                                                        onChange={(e) => setUser({ ...user, lastName: e.target.value })}
+                                                        className="input " /></div>
+                                            </label>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <label className='label'><div className="text-left mt-1 mb-1 pb-1"> Email Id</div>
+                                                <div className="form-outline mb-4">
+                                                    <input
+                                                        type="email"
+                                                        value={user.email}
+                                                        onChange={(e) => setUser({ ...user, email: e.target.value })}
+                                                        className="input" /></div>
+                                            </label>
+                                            <div className='error'>{emailError}</div></div>
+                                        <div class="col-md-6 mb-4">
+                                            <label className='label'><div className="text-left mt-1 mb-1 pb-1"> Password</div>
+                                                <div className="form-outline mb-4">
+                                                    <input
+                                                        type="password"
+                                                        value={user.password}
+                                                        onChange={(e) => setUser({ ...user, password: e.target.value })}
+                                                        className="input" /></div>
+                                            </label>
+                                            <div className='error'>{passError}</div></div></div>
+                                    <button className="sbtn" onClick={(e) => {
+                                        validateEmail(e);
+                                    }} >SignUp</button >
+                                </form>
+                                <h5>Already has an account?
+
+                                    <Link to="/">Login</Link>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

@@ -1,3 +1,12 @@
+.body{
+    background-image: url(/src/components/img/signup.jpg);
+    height:60rem;
+    background-position: center;
+    /* margin-top: 0px; */
+    background-size: cover;
+    background-repeat: no-repeat;   
+}
+
 .welcome{
     color: #314402;
     font-weight: 5rem;
